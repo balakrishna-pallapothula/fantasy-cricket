@@ -1,0 +1,70 @@
+@use '../../styles/tokens/tokens' as *;
+@use '../../styles/abstracts/mixins' as *;
+
+.header {
+	background-color: $semantic-colors-primary-900;
+
+	&__container {
+		max-width: $common-sizing-container;
+		margin: 0 auto;
+		padding: $common-spacing-large $common-spacing-xlarge;
+
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	&__brand {
+		display: flex;
+		align-items: center;
+		gap: $common-spacing-medium;
+		color: $semantic-colors-text-dark;
+		text-decoration: none;
+	}
+
+	&__brand-content {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__title {
+		font-family: $semantic-fontFamilies-heading;
+		font-size: $semantic-fontSizes-narrow-medium;
+		font-weight: $semantic-fontWeight-bold;
+	}
+
+	&__subtitle {
+		font-family: $semantic-fontFamilies-body;
+		font-size: $semantic-fontSizes-narrow-xs;
+		font-weight: $semantic-fontWeight-regular;
+	}
+	&__nav {
+		display: flex;
+		align-items: center;
+		gap: $common-spacing-xlarge;
+	}
+
+	&__link {
+		font-family: $semantic-fontFamilies-body;
+		font-size: $semantic-fontSizes-narrow-small;
+		font-weight: $semantic-fontWeight-regular;
+		color: $semantic-colors-actions-primary-default-dark;
+		text-decoration: none;
+
+		&:hover {
+			color: $semantic-colors-actions-primary-hover-dark;
+		}
+
+		&:active {
+			color: $semantic-colors-actions-primary-active-dark;
+		}
+
+		&:focus-visible {
+			color: $semantic-colors-actions-primary-focus-dark;
+		}
+
+		&--active {
+			color: $semantic-colors-actions-primary-active-dark;
+			font-weight: $semantic-fontWeight-bold;
+		}
+	}
+}

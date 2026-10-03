@@ -1,0 +1,393 @@
+// AUTO-GENERATED FILE. DO NOT EDIT DIRECTLY.
+
+$common-spacing-none: 0px;
+$common-spacing-small: 4px;
+$common-spacing-medium: 8px;
+$common-spacing-large: 16px;
+$common-spacing-xlarge: 32px;
+$common-spacing-xxlarge: 64px;
+$common-colors-primary-100: #DBEAFE;
+$common-colors-primary-200: #BFDBFE;
+$common-colors-primary-300: #93C5FD;
+$common-colors-primary-400: #60A5FA;
+$common-colors-primary-500: #2563EB;
+$common-colors-primary-600: #1D4ED8;
+$common-colors-primary-700: #1E40AF;
+$common-colors-primary-800: #1E3A8A;
+$common-colors-primary-900: #172554;
+$common-colors-secondary-100: #FFEDD5;
+$common-colors-secondary-200: #FED7AA;
+$common-colors-secondary-300: #FDBA74;
+$common-colors-secondary-400: #FB923C;
+$common-colors-secondary-500: #F97316;
+$common-colors-secondary-600: #EA580C;
+$common-colors-secondary-700: #C2410C;
+$common-colors-secondary-800: #9A3412;
+$common-colors-secondary-900: #7C2D12;
+$common-colors-tertiary-100: #F1F5F9;
+$common-colors-tertiary-200: #E2E8F0;
+$common-colors-tertiary-300: #CBD5E1;
+$common-colors-tertiary-400: #94A3B8;
+$common-colors-tertiary-500: #64748B;
+$common-colors-tertiary-600: #475569;
+$common-colors-tertiary-700: #334155;
+$common-colors-tertiary-800: #1E293B;
+$common-colors-tertiary-900: #0F172A;
+$common-fontFamilies-sans: Arial, sans-serif;
+$common-fontFamilies-serif: Times New Roman, serif;
+$common-fontFamilies-mono: Courier, monospace;
+$common-fontWeight-bold: 700;
+$common-fontWeight-light: 300;
+$common-fontWeight-black: 900;
+$common-fontWeight-regular: 400;
+$common-fontSizes-default-xxxl: 48px;
+$common-fontSizes-default-xxl: 40px;
+$common-fontSizes-default-xl: 32px;
+$common-fontSizes-default-large: 24px;
+$common-fontSizes-default-medium: 18px;
+$common-fontSizes-default-small: 16px;
+$common-fontSizes-wide-xxxl: 56px;
+$common-fontSizes-wide-xxl: 44px;
+$common-fontSizes-wide-xl: 36px;
+$common-fontSizes-wide-large: 28px;
+$common-fontSizes-wide-medium: 20px;
+$common-fontSizes-wide-small: 18px;
+$common-lineHeights-default-xxxl: 56px;
+$common-lineHeights-default-xxl: 48px;
+$common-lineHeights-default-xl: 40px;
+$common-lineHeights-default-large: 32px;
+$common-lineHeights-default-medium: 28px;
+$common-lineHeights-default-small: 24px;
+$common-lineHeights-wide-xxxl: 64px;
+$common-lineHeights-wide-xxl: 52px;
+$common-lineHeights-wide-xl: 44px;
+$common-lineHeights-wide-large: 36px;
+$common-lineHeights-wide-medium: 30px;
+$common-lineHeights-wide-small: 28px;
+$common-borderRadius-xxs: 2px;
+$common-borderRadius-xs: 4px;
+$common-borderRadius-small: 8px;
+$common-borderRadius-medium: 16px;
+$common-borderRadius-large: 32px;
+$common-borderRadius-none: 0;
+$common-borderWidth-thin: 1px;
+$common-borderWidth-medium: 2px;
+$common-borderWidth-thick: 4px;
+$common-borderWidth-none: 0;
+$common-outlineWidth-thin: thin;
+$common-outlineWidth-medium: medium;
+$common-outlineWidth-thick: thick;
+$common-outlineWidth-unset: unset;
+$common-sizing-none: 0;
+$common-sizing-xxs: 1px;
+$common-sizing-xs: 8px;
+$common-sizing-small: 16px;
+$common-sizing-medium: 32px;
+$common-sizing-large: 64px;
+$common-sizing-xl: 120px;
+$common-sizing-xxl: 256px;
+$common-sizing-container: 1520px;
+$common-other-time-transition-short: 200ms;
+$common-other-time-transition-base: 400ms;
+$common-other-time-transition-long: 600ms;
+$common-other-time-transition-xl: 1000ms;
+$common-other-time-duration-instant: 400ms;
+$common-other-time-duration-short: 2000ms;
+$common-other-time-duration-base: 4000ms;
+$common-other-time-duration-long: 6000ms;
+$common-other-time-delay-none: 0ms;
+$common-other-time-delay-short: 50ms;
+$common-other-time-delay-base: 100ms;
+$common-other-time-delay-long: 200ms;
+$common-other-zIndex-cookieBanner: 700;
+$common-other-zIndex-modal: 600;
+$common-other-zIndex-header: 500;
+$common-other-zIndex-isi: 400;
+$common-other-zIndex-overlay: 300;
+$common-other-zIndex-layer: 100;
+$common-other-zIndex-base: 0;
+$common-other-zIndex-behind: -1;
+$common-boxShadow-soft-light: 0 0 6px 0 rgba(0, 0, 0, 0.15);
+$semantic-colors-none: $common-colors-primary-100;
+$semantic-colors-surface-light: $common-colors-primary-100;
+$semantic-colors-surface-dark: $common-colors-primary-500;
+$semantic-colors-surface-modal-backdrop: rgba(0, 0, 0, 0.4);
+$semantic-colors-primary-500: $common-colors-primary-500;
+$semantic-colors-actions-primary-default-light: $semantic-colors-primary-500;
+$semantic-colors-actions-primary-light: $semantic-colors-actions-primary-default-light;
+$semantic-colors-actions-primary-default-dark: $common-colors-primary-100;
+$semantic-colors-actions-primary-dark: $semantic-colors-actions-primary-default-dark;
+$semantic-colors-primary-600: $common-colors-primary-600;
+$semantic-colors-actions-primary-hover-light: $semantic-colors-primary-600;
+$semantic-colors-actions-primary-hover-dark: $common-colors-primary-300;
+$semantic-colors-primary-700: $common-colors-primary-700;
+$semantic-colors-actions-primary-active-light: $semantic-colors-primary-700;
+$semantic-colors-actions-primary-active-dark: $common-colors-primary-200;
+$semantic-colors-actions-primary-focus-light: $semantic-colors-primary-600;
+$semantic-colors-actions-primary-focus-dark: $common-colors-primary-300;
+$semantic-colors-actions-primary-disabled-light: $common-colors-tertiary-500;
+$semantic-colors-actions-primary-disabled-dark: $common-colors-tertiary-300;
+$semantic-colors-error-500: $common-colors-tertiary-500;
+$semantic-colors-actions-primary-error-light: $semantic-colors-error-500;
+$semantic-colors-error-300: $common-colors-tertiary-300;
+$semantic-colors-actions-primary-error-dark: $semantic-colors-error-300;
+$semantic-colors-actions-on-primary-light: $common-colors-primary-100;
+$semantic-colors-actions-on-primary-dark: $common-colors-primary-900;
+$semantic-colors-secondary-500: $common-colors-secondary-500;
+$semantic-colors-actions-secondary-default-light: $semantic-colors-secondary-500;
+$semantic-colors-actions-secondary-light: $semantic-colors-actions-secondary-default-light;
+$semantic-colors-actions-secondary-default-dark: $common-colors-secondary-100;
+$semantic-colors-actions-secondary-dark: $semantic-colors-actions-secondary-default-dark;
+$semantic-colors-secondary-600: $common-colors-secondary-600;
+$semantic-colors-actions-secondary-hover-light: $semantic-colors-secondary-600;
+$semantic-colors-actions-secondary-hover-dark: $common-colors-secondary-300;
+$semantic-colors-secondary-700: $common-colors-secondary-700;
+$semantic-colors-actions-secondary-active-light: $semantic-colors-secondary-700;
+$semantic-colors-actions-secondary-active-dark: $common-colors-secondary-200;
+$semantic-colors-actions-secondary-focus-light: $semantic-colors-secondary-600;
+$semantic-colors-actions-secondary-focus-dark: $common-colors-secondary-300;
+$semantic-colors-actions-secondary-disabled-light: $common-colors-tertiary-300;
+$semantic-colors-actions-secondary-disabled-dark: $common-colors-tertiary-200;
+$semantic-colors-actions-on-secondary-light: $common-colors-primary-100;
+$semantic-colors-actions-on-secondary-dark: $common-colors-primary-900;
+$semantic-colors-text-light: $common-colors-primary-900;
+$semantic-colors-text-dark: $common-colors-primary-100;
+$semantic-colors-foreground-light: $common-colors-primary-300;
+$semantic-colors-foreground-dark: $common-colors-primary-500;
+$semantic-colors-primary-0: $common-colors-primary-100;
+$semantic-colors-primary-50: $common-colors-primary-100;
+$semantic-colors-primary-100: $common-colors-primary-100;
+$semantic-colors-primary-200: $common-colors-primary-200;
+$semantic-colors-primary-300: $common-colors-primary-300;
+$semantic-colors-primary-400: $common-colors-primary-400;
+$semantic-colors-primary-800: $common-colors-primary-800;
+$semantic-colors-primary-900: $common-colors-primary-900;
+$semantic-colors-primary-950: $common-colors-primary-900;
+$semantic-colors-primary-light: $semantic-colors-primary-500;
+$semantic-colors-primary-dark: $semantic-colors-primary-200;
+$semantic-colors-secondary-50: $common-colors-secondary-100;
+$semantic-colors-secondary-100: $common-colors-secondary-100;
+$semantic-colors-secondary-200: $common-colors-secondary-200;
+$semantic-colors-secondary-300: $common-colors-secondary-300;
+$semantic-colors-secondary-400: $common-colors-secondary-400;
+$semantic-colors-secondary-800: $common-colors-secondary-800;
+$semantic-colors-secondary-900: $common-colors-secondary-900;
+$semantic-colors-secondary-950: $common-colors-secondary-900;
+$semantic-colors-secondary-light: $semantic-colors-secondary-500;
+$semantic-colors-secondary-dark: $semantic-colors-secondary-200;
+$semantic-colors-tertiary-50: $common-colors-tertiary-100;
+$semantic-colors-tertiary-100: $common-colors-tertiary-100;
+$semantic-colors-tertiary-200: $common-colors-tertiary-200;
+$semantic-colors-tertiary-300: $common-colors-tertiary-300;
+$semantic-colors-tertiary-400: $common-colors-tertiary-400;
+$semantic-colors-tertiary-500: $common-colors-tertiary-500;
+$semantic-colors-tertiary-600: $common-colors-tertiary-600;
+$semantic-colors-tertiary-700: $common-colors-tertiary-700;
+$semantic-colors-tertiary-800: $common-colors-tertiary-800;
+$semantic-colors-tertiary-900: $common-colors-tertiary-900;
+$semantic-colors-tertiary-950: $common-colors-tertiary-900;
+$semantic-colors-tertiary-light: $semantic-colors-tertiary-500;
+$semantic-colors-tertiary-dark: $semantic-colors-tertiary-200;
+$semantic-colors-error-50: $common-colors-tertiary-100;
+$semantic-colors-error-100: $common-colors-tertiary-100;
+$semantic-colors-error-200: $common-colors-tertiary-200;
+$semantic-colors-error-400: $common-colors-tertiary-400;
+$semantic-colors-error-600: $common-colors-tertiary-600;
+$semantic-colors-error-700: $common-colors-tertiary-700;
+$semantic-colors-error-800: $common-colors-tertiary-800;
+$semantic-colors-error-900: $common-colors-tertiary-900;
+$semantic-colors-error-950: $common-colors-tertiary-900;
+$semantic-colors-error-light: $semantic-colors-error-500;
+$semantic-colors-error-dark: $semantic-colors-error-200;
+$semantic-colors-background-light: $common-colors-primary-100;
+$semantic-colors-background-dark: $common-colors-primary-500;
+$semantic-fontWeight-bold: $common-fontWeight-bold;
+$semantic-fontWeight-light: $common-fontWeight-light;
+$semantic-fontWeight-black: $common-fontWeight-black;
+$semantic-fontWeight-regular: $common-fontWeight-regular;
+$semantic-fontFamilies-body: $common-fontFamilies-sans;
+$semantic-fontFamilies-heading: $common-fontFamilies-sans;
+$semantic-fontFamilies-mono: $common-fontFamilies-mono;
+$semantic-fontSizes-narrow-medium: 20px;
+$semantic-fontSizes-narrow-large: 25.00px;
+$semantic-fontSizes-narrow-xl: 31.2px;
+$semantic-fontSizes-narrow-xxl: 39.06px;
+$semantic-fontSizes-narrow-xxxl: 48.83px;
+$semantic-fontSizes-narrow-small: 16px;
+$semantic-fontSizes-narrow-xs: 12.8px;
+$semantic-fontSizes-wide-medium: 22.50px;
+$semantic-fontSizes-wide-large: 28.13px;
+$semantic-fontSizes-wide-xl: 35.16px;
+$semantic-fontSizes-wide-xxl: 43.95px;
+$semantic-fontSizes-wide-xxxl: 54.93px;
+$semantic-fontSizes-wide-small: 18.00px;
+$semantic-fontSizes-wide-xs: 11.48px;
+$semantic-lineHeights-narrow-small: 20px;
+$semantic-lineHeights-narrow-large: $semantic-lineHeights-narrow-small * 1.5;
+$semantic-lineHeights-narrow-medium: $semantic-lineHeights-narrow-small * 1.5;
+$semantic-lineHeights-narrow-xl: $semantic-lineHeights-narrow-small * 2;
+$semantic-lineHeights-narrow-xxl: $semantic-lineHeights-narrow-small * 2;
+$semantic-lineHeights-narrow-xxxl: $semantic-lineHeights-narrow-small * 2.5;
+$semantic-lineHeights-narrow-xs: $semantic-lineHeights-narrow-small;
+$semantic-lineHeights-wide-small: 20px;
+$semantic-lineHeights-wide-large: $semantic-lineHeights-wide-small * 1.5;
+$semantic-lineHeights-wide-medium: $semantic-lineHeights-wide-small * 1.5;
+$semantic-lineHeights-wide-xl: $semantic-lineHeights-wide-small * 2;
+$semantic-lineHeights-wide-xxl: $semantic-lineHeights-wide-small * 2.5;
+$semantic-lineHeights-wide-xxxl: $semantic-lineHeights-wide-small * 3;
+$semantic-lineHeights-wide-xs: $semantic-lineHeights-wide-small;
+$semantic-spacing-none: $common-spacing-none;
+$semantic-spacing-oneLineHeight-wide: $semantic-lineHeights-wide-small;
+$semantic-spacing-oneLineHeight-narrow: $semantic-lineHeights-narrow-small;
+$semantic-spacing-twoLineHeight-wide: $semantic-spacing-oneLineHeight-wide * 2;
+$semantic-spacing-twoLineHeight-narrow: $semantic-spacing-oneLineHeight-narrow * 2;
+$semantic-spacing-threeLineHeight-wide: $semantic-spacing-oneLineHeight-wide * 3;
+$semantic-spacing-threeLineHeight-narrow: $semantic-spacing-oneLineHeight-narrow * 3;
+$semantic-spacing-_rem_horizontal: $common-spacing-small;
+$semantic-spacing-horizontal-narrow: 8px;
+$semantic-spacing-horizontal-wide: 16px;
+$semantic-spacing-horizontal-onerem-narrow: 1rem;
+$semantic-spacing-horizontal-onerem-wide: 1rem;
+$semantic-spacing-horizontal-tworem-narrow: $semantic-spacing-horizontal-onerem-narrow * 2;
+$semantic-spacing-horizontal-tworem-wide: $semantic-spacing-horizontal-onerem-wide * 2;
+$semantic-spacing-_rem_vertical: $common-spacing-small;
+$semantic-spacing-vertical-narrow: 8px;
+$semantic-spacing-vertical-wide: 16px;
+$semantic-spacing-halfLineHeight-wide: $semantic-lineHeights-wide-small * .5;
+$semantic-spacing-halfLineHeight-narrow: $semantic-lineHeights-narrow-small * .5;
+$semantic-spacing-quarterLineHeight-wide: $semantic-lineHeights-wide-small * .25;
+$semantic-spacing-quarterLineHeight-narrow: $semantic-lineHeights-narrow-small * .25;
+$semantic-borderRadius-xs: $common-borderRadius-xs;
+$semantic-borderRadius-small: $common-borderRadius-small;
+$semantic-borderRadius-medium: $common-borderRadius-medium;
+$semantic-borderRadius-large: $common-borderRadius-large;
+$semantic-borderRadius-none: $common-borderRadius-none;
+$semantic-borderWidth-thin: $common-borderWidth-thin;
+$semantic-borderWidth-medium: $common-borderWidth-medium;
+$semantic-borderWidth-thick: $common-borderWidth-thick;
+$semantic-borderWidth-none: 0;
+$semantic-outlineWidth-thin: $common-outlineWidth-thin;
+$semantic-outlineWidth-medium: $common-outlineWidth-medium;
+$semantic-outlineWidth-thick: $common-outlineWidth-thick;
+$semantic-outlineWidth-unset: unset;
+$semantic-sizing-none: $common-sizing-none;
+$semantic-sizing-xxs: $common-sizing-xxs;
+$semantic-sizing-xs: $common-sizing-xs;
+$semantic-sizing-small: $common-sizing-small;
+$semantic-sizing-medium: $common-sizing-medium;
+$semantic-sizing-large: $common-sizing-large;
+$semantic-sizing-xl: $common-sizing-xl;
+$semantic-sizing-xxl: $common-sizing-xxl;
+$semantic-sizing-breakpoints-small: 768px;
+$semantic-sizing-breakpoints-medium: 992px;
+$semantic-sizing-breakpoints-large: 1024px;
+$semantic-sizing-breakpoints-x-large: 1280px;
+$semantic-sizing-breakpoints-xx-large: 1440px;
+$semantic-sizing-oneLineHeight-narrow: 20px;
+$semantic-sizing-oneLineHeight-wide: 20px;
+$semantic-sizing-twoLineHeight-narrow: $semantic-sizing-oneLineHeight-narrow * 2;
+$semantic-sizing-twoLineHeight-wide: $semantic-sizing-oneLineHeight-wide * 2;
+$semantic-sizing-threeLineHeight-narrow: $semantic-sizing-oneLineHeight-narrow * 3;
+$semantic-sizing-threeLineHeight-wide: $semantic-sizing-oneLineHeight-wide * 3;
+$semantic-sizing-maxWidthText-narrow: 40em;
+$semantic-sizing-maxWidthText-wide: 55em;
+$semantic-typography-narrow-headings-xxxl: (
+  font-family: $semantic-fontFamilies-heading,
+  font-weight: $semantic-fontWeight-regular,
+  line-height: $semantic-lineHeights-narrow-xxxl,
+  font-size: $semantic-fontSizes-narrow-xxxl
+);
+$semantic-typography-narrow-headings-xxl: (
+  font-family: $semantic-fontFamilies-heading,
+  font-weight: $semantic-fontWeight-regular,
+  line-height: $semantic-lineHeights-narrow-xxl,
+  font-size: $semantic-fontSizes-narrow-xxl
+);
+$semantic-typography-narrow-headings-xl: (
+  font-family: $semantic-fontFamilies-heading,
+  font-weight: $semantic-fontWeight-regular,
+  line-height: $semantic-lineHeights-narrow-xl,
+  font-size: $semantic-fontSizes-narrow-xl
+);
+$semantic-typography-narrow-headings-large: (
+  font-family: $semantic-fontFamilies-heading,
+  font-weight: $semantic-fontWeight-regular,
+  line-height: $semantic-lineHeights-narrow-large,
+  font-size: $semantic-fontSizes-narrow-large
+);
+$semantic-typography-narrow-headings-medium: (
+  font-family: $semantic-fontFamilies-heading,
+  font-weight: $semantic-fontWeight-bold,
+  line-height: $semantic-lineHeights-narrow-medium,
+  font-size: $semantic-fontSizes-narrow-medium
+);
+$semantic-typography-narrow-body-regular: (
+  font-family: $semantic-fontFamilies-body,
+  font-weight: $semantic-fontWeight-regular,
+  line-height: $semantic-lineHeights-narrow-small,
+  font-size: $semantic-fontSizes-narrow-small
+);
+$semantic-typography-wide-headings-xxxl: (
+  font-family: $semantic-fontFamilies-heading,
+  font-weight: $semantic-fontWeight-regular,
+  line-height: $semantic-lineHeights-wide-xxxl,
+  font-size: $semantic-fontSizes-wide-xxxl
+);
+$semantic-typography-wide-headings-xxl: (
+  font-family: $semantic-fontFamilies-heading,
+  font-weight: $semantic-fontWeight-regular,
+  line-height: $semantic-lineHeights-wide-xxl,
+  font-size: $semantic-fontSizes-wide-xxl
+);
+$semantic-typography-wide-headings-xl: (
+  font-family: $semantic-fontFamilies-heading,
+  font-weight: $semantic-fontWeight-regular,
+  line-height: $semantic-lineHeights-wide-xl,
+  font-size: $semantic-fontSizes-wide-xl
+);
+$semantic-typography-wide-headings-large: (
+  font-family: $semantic-fontFamilies-heading,
+  font-weight: $semantic-fontWeight-regular,
+  line-height: $semantic-lineHeights-wide-large,
+  font-size: $semantic-fontSizes-wide-large
+);
+$semantic-typography-wide-headings-medium: (
+  font-family: $semantic-fontFamilies-heading,
+  font-weight: $semantic-fontWeight-bold,
+  line-height: $semantic-lineHeights-wide-medium,
+  font-size: $semantic-fontSizes-wide-medium
+);
+$semantic-typography-wide-body-regular: (
+  font-family: $semantic-fontFamilies-body,
+  font-weight: $semantic-fontWeight-regular,
+  line-height: $semantic-lineHeights-wide-small,
+  font-size: $semantic-fontSizes-wide-small
+);
+$component-button-primary-background-default: $semantic-colors-actions-primary-default-light;
+$component-button-primary-background-hover: $semantic-colors-actions-primary-hover-light;
+$component-button-primary-background-active: $semantic-colors-actions-primary-active-light;
+$component-button-primary-background-disabled: $semantic-colors-actions-primary-disabled-light;
+$component-button-primary-text: $semantic-colors-actions-on-primary-light;
+$component-button-secondary-background-default: $semantic-colors-actions-secondary-default-light;
+$component-button-secondary-background-hover: $semantic-colors-actions-secondary-hover-light;
+$component-button-secondary-background-active: $semantic-colors-actions-secondary-active-light;
+$component-button-secondary-background-disabled: $semantic-colors-actions-secondary-disabled-light;
+$component-button-secondary-text: $semantic-colors-actions-on-secondary-light;
+$component-button-borderRadius: $semantic-borderRadius-small;
+$component-button-padding-horizontal: $semantic-spacing-horizontal-wide;
+$component-button-padding-vertical: $semantic-spacing-vertical-narrow;
+$component-card-background: $semantic-colors-surface-light;
+$component-card-text: $semantic-colors-text-light;
+$component-card-borderRadius: $semantic-borderRadius-small;
+$component-card-borderWidth: $semantic-borderWidth-thin;
+$component-card-padding: $common-spacing-large;
+$component-input-background: $semantic-colors-surface-light;
+$component-input-text: $semantic-colors-text-light;
+$component-input-borderWidth-default: $semantic-borderWidth-thin;
+$component-input-borderWidth-focus: $semantic-borderWidth-medium;
+$component-input-borderRadius: $semantic-borderRadius-xs;
+$component-input-padding: $common-spacing-medium;
+$component-tabs-text-default: $semantic-colors-text-light;
+$component-tabs-text-active: $semantic-colors-actions-primary-default-light;
+$component-tabs-borderWidth: $semantic-borderWidth-medium;
+$component-tabs-spacing: $common-spacing-medium;

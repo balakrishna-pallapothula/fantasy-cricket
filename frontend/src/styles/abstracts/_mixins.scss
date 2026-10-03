@@ -1,0 +1,29 @@
+@use '../tokens/tokens' as *;
+@use 'sass:map';
+
+$breakpoints: (
+	small: $semantic-sizing-breakpoints-small,
+	medium: $semantic-sizing-breakpoints-medium,
+	large: $semantic-sizing-breakpoints-large,
+	x-large: $semantic-sizing-breakpoints-x-large,
+	xx-large: $semantic-sizing-breakpoints-xx-large
+);
+
+@mixin mq($breakpoint) {
+	$value: map.get($breakpoints, $breakpoint);
+
+	@if $value {
+		@media (min-width: $value) {
+			@content;
+		}
+	} @else {
+		@error "Unknown breakpoint: #{$breakpoint}";
+	}
+}
+
+@mixin typography($style) {
+	font-family: map.get($style, font-family);
+	font-weight: map.get($style, font-weight);
+	line-height: map.get($style, line-height);
+	font-size: map.get($style, font-size);
+}

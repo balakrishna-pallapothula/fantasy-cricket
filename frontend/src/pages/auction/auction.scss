@@ -1,0 +1,52 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	font-family: Arial, sans-serif;
+}
+
+.navbar {
+	display: flex;
+	gap: 24px;
+	border-bottom: 1px solid #eee;
+	padding: 16px;
+}
+
+.tab {
+	cursor: pointer;
+	padding-bottom: 8px;
+}
+
+.tab.active {
+	color: #00a86b;
+	border-bottom: 3px solid #00a86b;
+}
+
+.filters {
+	padding: 16px;
+	font-weight: bold;
+}
+
+.filter-buttons {
+	margin-top: 10px;
+}
+
+.filter-buttons button {
+	margin-right: 10px;
+	padding: 6px 12px;
+	border: 1px solid #00a86b;
+	background: white;
+	color: #00a86b;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+#app {
+	padding: 16px;
+}
+
+.card {
+	padding: 12px;
+	border: 1px solid #ddd;
+	margin-bottom: 10px;
+	border-radius: 6px;
+}

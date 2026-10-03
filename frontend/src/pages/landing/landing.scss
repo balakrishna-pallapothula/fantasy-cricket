@@ -1,0 +1,91 @@
+@use '../../styles/tokens/tokens' as *;
+@use '../../styles/abstracts/mixins' as *;
+
+.landing {
+	&__hero {
+		background-color: $semantic-colors-surface-light;
+		padding: $common-spacing-xxlarge $common-spacing-xlarge;
+		text-align: center;
+	}
+
+	&__hero-content {
+		max-width: $semantic-sizing-maxWidthText-narrow;
+		margin: 0 auto;
+	}
+
+	&__title {
+		@include typography($semantic-typography-narrow-headings-large);
+		margin: 0 0 $common-spacing-large;
+		color: $semantic-colors-text-light;
+	}
+
+	&__tagline {
+		@include typography($semantic-typography-narrow-headings-medium);
+		margin: 0 0 $common-spacing-medium;
+		color: $semantic-colors-text-light;
+	}
+
+	&__description {
+		@include typography($semantic-typography-narrow-body-regular);
+		margin: 0;
+		color: $semantic-colors-text-light;
+	}
+	&__options {
+		display: flex;
+		gap: $common-spacing-xlarge;
+		max-width: $semantic-sizing-maxWidthText-wide;
+		margin: $common-spacing-xlarge auto;
+		padding: 0 $common-spacing-xlarge;
+	}
+	&__card {
+		flex: 1;
+		padding: $component-card-padding;
+		background-color: $component-card-background;
+		color: $component-card-text;
+		border: $component-card-borderWidth solid $semantic-colors-tertiary-300;
+		border-radius: $component-card-borderRadius;
+
+		&-title {
+			@include typography($semantic-typography-narrow-headings-medium);
+			margin: 0 0 $common-spacing-medium;
+		}
+		&-description {
+			@include typography($semantic-typography-narrow-body-regular);
+			margin: 0 0 $common-spacing-large;
+		}
+		&-action {
+			display: inline-block;
+			padding: $component-button-padding-vertical $component-button-padding-horizontal;
+			border-radius: $component-button-borderRadius;
+			text-decoration: none;
+
+			@include typography($semantic-typography-narrow-body-regular);
+
+			&--primary {
+				background-color: $component-button-primary-background-default;
+				color: $component-button-primary-text;
+
+				&:hover {
+					background-color: $component-button-primary-background-hover;
+				}
+
+				&:active {
+					background-color: $component-button-primary-background-active;
+				}
+			}
+
+			&--secondary {
+				background-color: $component-button-secondary-background-default;
+				color: $component-button-secondary-text;
+
+				&:hover {
+					background-color: $component-button-secondary-background-hover;
+				}
+
+				&:active {
+					background-color: $component-button-secondary-background-active;
+				}
+			}
+		}
+	}
+}
