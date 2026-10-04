@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Player Registration | Fantasy Cricket</title>
+	</head>
+
+	<body>
+		<div id="header"></div>
+
+		<main class="registration">
+			<h1 class="registration__title">Player Registration</h1>
+
+			<form class="registration__form" id="player-registration-form">
+				<div class="registration__field">
+					<label for="name">Player Name</label>
+					<input type="text" id="name" name="name" required />
+				</div>
+
+				<div class="registration__field">
+					<label for="role">Role</label>
+					<select id="role" name="role" required>
+						<option value="">Select a role</option>
+						<option value="Batsman">Batsman</option>
+						<option value="Bowler">Bowler</option>
+						<option value="All-Rounder">All-Rounder</option>
+						<option value="Wicket-Keeper">Wicket-Keeper</option>
+					</select>
+				</div>
+
+				<div class="registration__field">
+					<label for="country">Country</label>
+					<input type="text" id="country" name="country" required />
+				</div>
+
+				<div class="registration__field">
+					<label for="basePrice">Base Price</label>
+					<input type="number" id="basePrice" name="basePrice" min="0" required />
+				</div>
+
+				<button type="submit" class="registration__submit">Register Player</button>
+			</form>
+
+			<p class="registration__message" id="registration-message"></p>
+		</main>
+
+		<div id="footer"></div>
+	</body>
+</html>
