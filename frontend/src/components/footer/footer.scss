@@ -1,0 +1,36 @@
+@use '../../styles/tokens/tokens' as *;
+
+.footer {
+	background-color: $common-colors-primary-900;
+	color: $semantic-colors-text-dark;
+
+	&__container {
+		max-width: $common-sizing-container;
+		margin: 0 auto;
+		padding: $common-spacing-large;
+
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	&__brand {
+		display: flex;
+		flex-direction: column;
+		gap: $common-spacing-small;
+	}
+
+	&__title {
+		font-family: $semantic-fontFamilies-heading;
+		font-weight: $semantic-fontWeight-bold;
+	}
+
+	&__subtitle,
+	&__copyright {
+		font-family: $semantic-fontFamilies-body;
+	}
+
+	&__copyright {
+		margin: $common-spacing-large 0 0;
+	}
+}
