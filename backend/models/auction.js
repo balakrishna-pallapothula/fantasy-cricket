@@ -22,9 +22,19 @@ const auctionSchema = new mongoose.Schema(
     finalPrice: {
       type: Number
     },
-    bidAmount: {
-      type: Number
-    },
+    bids: [
+      {
+        teamId: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Team",
+          required: true
+        },
+        amount: {
+          type: Number,
+          required: true
+        }
+      }
+    ],
     status: {
       type: String,
       enum: ["UPCOMING", "LIVE", "SOLD", "UNSOLD"],
