@@ -7,6 +7,10 @@ const auctionSchema = new mongoose.Schema(
       ref: "Player",
       required: true
     },
+    setNumber: {
+      type: Number,
+      required: true
+    },
     teamId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Team"
@@ -23,8 +27,8 @@ const auctionSchema = new mongoose.Schema(
     },
     status: {
       type: String,
-      enum: ["SOLD", "UNSOLD"],
-      default: "UNSOLD"
+      enum: ["UPCOMING", "LIVE", "SOLD", "UNSOLD"],
+      default: "UPCOMING"
     }
   },
   { timestamps: true }
