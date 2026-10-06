@@ -1,7 +1,18 @@
+
 const BASE_URL = 'http://localhost:5000/api';
 
 export const getPlayers = async () => {
   const res = await fetch(`${BASE_URL}/players`);
+  return res.json();
+};
+
+export const getTeams = async () => {
+  const res = await fetch(`${BASE_URL}/teams`);
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch teams');
+  }
+
   return res.json();
 };
 

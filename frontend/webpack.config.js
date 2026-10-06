@@ -6,6 +6,7 @@ module.exports = {
     landing: './src/pages/landing/landing.js',
     registration: './src/pages/registration/registration.js',
     auction: './src/pages/auction/auction.js',
+    teams: './src/pages/teams/teams.js',
   },
   output: {
     filename: '[name].bundle.js',
@@ -49,6 +50,12 @@ module.exports = {
       template: './src/pages/auction/auction.html',
       filename: 'auction.html',
       chunks: ['auction'],
+    }),
+
+    new HtmlWebpackPlugin({
+      template: './src/pages/teams/teams.html',
+      filename: 'teams.html',
+      chunks: ['teams'],
     }),
   ],
 };
