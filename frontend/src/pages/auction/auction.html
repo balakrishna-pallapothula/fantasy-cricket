@@ -1,25 +1,29 @@
 <!doctype html>
-<html>
+<html lang="en">
 	<head>
-		<title>Fantasy Cricket</title>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Player Auction | Fantasy Cricket</title>
 	</head>
+
 	<body>
-		<div class="navbar">
-			<div class="tab" data-tab="live">Live</div>
-			<div class="tab" data-tab="completed">Completed</div>
-			<div class="tab" data-tab="players">Players</div>
-			<div class="tab active" data-tab="teams">Teams</div>
-		</div>
+		<div id="header"></div>
 
-		<div class="filters">
-			FILTERS
-			<div class="filter-buttons">
-				<button data-role="All">All</button>
-				<button data-role="Batsman">Batsman</button>
-				<button data-role="Bowler">Bowler</button>
-			</div>
-		</div>
+		<main class="auction">
+			<h1 class="auction__title">Player Auction</h1>
 
-		<div id="app"></div>
+			<section class="auction__current">
+				<h2>Current Player</h2>
+				<div id="current-player">
+					<p>No player selected</p>
+				</div>
+			</section>
+
+			<section class="auction__players">
+				<div id="app"></div>
+			</section>
+		</main>
+
+		<div id="footer"></div>
 	</body>
 </html>

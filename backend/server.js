@@ -91,6 +91,7 @@ const connectDB = require("./db");
 const playerRoutes = require("./routes/playerRoutes");
 const teamRoutes = require("./routes/teamRoutes");
 const playerProfileRoutes = require("./routes/playerProfileRoutes");
+const auctionRoutes = require("./routes/auctionRoutes");
 
 const app = express();
 
@@ -102,6 +103,7 @@ connectDB();
 app.use("/api/players", playerRoutes);
 app.use("/api/players", playerProfileRoutes);
 app.use("/api/teams", teamRoutes);
+app.use("/api/auction", auctionRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on ${PORT}`));
