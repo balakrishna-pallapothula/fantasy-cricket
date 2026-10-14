@@ -182,12 +182,17 @@ router.patch("/:auctionId/sold", async (req, res) => {
 
     await auction.save();
 
-    await Player.findByIdAndUpdate(
+    const updatedPlayer = await Player.findByIdAndUpdate(
       auction.playerId,
       {
         teamId: winningBid.teamId
-      }
+      },
+      { new: true }
     );
+
+    if (!updatedPlayer) {
+      throw new Error("Player not found while assigning winning team");
+    }
 
     return res.json({
       message: "Player sold successfully",
