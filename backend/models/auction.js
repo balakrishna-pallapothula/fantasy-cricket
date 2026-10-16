@@ -44,4 +44,12 @@ const auctionSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+auctionSchema.index(
+  { status: 1 },
+  {
+    unique: true,
+    partialFilterExpression: { status: "LIVE" }
+  }
+);
+
 module.exports = mongoose.model("Auction", auctionSchema);

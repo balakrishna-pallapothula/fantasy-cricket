@@ -136,6 +136,22 @@ router.patch("/:auctionId/start", async (req, res) => {
       });
     }
 
+    if (auction.status !== "UPCOMING") {
+      return res.status(400).json({
+        message: "Only an upcoming auction can be started"
+      });
+    }
+
+    const activeAuction = await Auction.findOne({
+      status: "LIVE"
+    });
+
+    if (activeAuction) {
+      return res.status(409).json({
+        message: "Another auction is already LIVE"
+      });
+    }
+
     auction.status = "LIVE";
     await auction.save();
 
@@ -144,7 +160,13 @@ router.patch("/:auctionId/start", async (req, res) => {
       data: auction
     });
   } catch (error) {
-    res.status(500).json({
+    if (error.code === 11000) {
+      return res.status(409).json({
+        message: "Another auction is already LIVE"
+      });
+    }
+
+    return res.status(500).json({
       message: error.message
     });
   }
