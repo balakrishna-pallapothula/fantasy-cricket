@@ -151,6 +151,7 @@ function renderSelectedPlayer() {
     } catch (error) {
       startAuctionButton.disabled = false;
       console.error('Error starting auction:', error);
+      alert(error.message);
     }
   });
 
