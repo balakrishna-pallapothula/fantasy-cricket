@@ -227,5 +227,42 @@ router.patch("/:auctionId/sold", async (req, res) => {
   }
 });
 
+router.patch("/:auctionId/unsold", async (req, res) => {
+  try {
+    const { auctionId } = req.params;
+
+    const auction = await Auction.findById(auctionId);
+
+    if (!auction) {
+      return res.status(404).json({
+        message: "Auction not found"
+      });
+    }
+
+    if (auction.status !== "LIVE") {
+      return res.status(400).json({
+        message: "Only a live auction can be marked as unsold"
+      });
+    }
+
+    if (auction.bids.length > 0) {
+      return res.status(400).json({
+        message: "Cannot mark auction as unsold when bids exist"
+      });
+    }
+
+    auction.status = "UNSOLD";
+    await auction.save();
+
+    return res.json({
+      message: "Player marked as unsold successfully",
+      data: auction
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: error.message
+    });
+  }
+});
 
 module.exports = router;
