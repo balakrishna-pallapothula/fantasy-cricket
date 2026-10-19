@@ -8,6 +8,7 @@ import {
   startAuction,
   placeBid,
   markAuctionSold,
+  markAuctionUnsold,
 } from '../../api';
 
 const app = document.getElementById('app');
@@ -186,6 +187,39 @@ function renderSelectedPlayer() {
         } catch (error) {
           soldButton.disabled = false;
           console.error('Error marking auction as sold:', error);
+        }
+      });
+    }
+
+    else {
+      const unsoldButton = document.createElement('button');
+
+      unsoldButton.id = 'mark-unsold';
+      unsoldButton.textContent = 'Mark as UNSOLD';
+
+      document.querySelector('#bidding-controls').append(unsoldButton);
+
+      unsoldButton.addEventListener('click', async () => {
+        unsoldButton.disabled = true;
+
+        try {
+          const response = await markAuctionUnsold(currentAuction._id);
+
+          currentAuction = response.data;
+
+          const auctionIndex = auctions.findIndex(
+            auction => auction._id === currentAuction._id
+          );
+
+          if (auctionIndex !== -1) {
+            auctions[auctionIndex] = currentAuction;
+          }
+
+          renderSelectedPlayer();
+        } catch (error) {
+          unsoldButton.disabled = false;
+          console.error('Error marking auction as unsold:', error);
+          alert(error.message);
         }
       });
     }

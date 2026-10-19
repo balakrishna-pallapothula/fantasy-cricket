@@ -113,3 +113,17 @@ export const markAuctionSold = async (auctionId) => {
 
   return data;
 };
+
+export const markAuctionUnsold = async (auctionId) => {
+  const res = await fetch(`${BASE_URL}/auction/${auctionId}/unsold`, {
+    method: 'PATCH',
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error(data.message || 'Failed to mark auction as unsold');
+  }
+
+  return data;
+};
