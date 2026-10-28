@@ -68,3 +68,20 @@
 		}
 	}
 }
+
+@media (max-width: 600px) {
+	.header {
+		&__container {
+			flex-direction: column;
+			align-items: stretch;
+			gap: $common-spacing-large;
+			padding: $common-spacing-large;
+		}
+
+		&__nav {
+			justify-content: space-between;
+			flex-wrap: wrap;
+			gap: $common-spacing-medium;
+		}
+	}
+}
