@@ -1,6 +1,9 @@
 const express = require("express");
 const Auction = require("../models/auction");
 const Player = require("../models/player");
+const AuctionSet = require("../models/auctionSet");
+const mongoose = require("mongoose");
+const Team = require("../models/team");
 
 const router = express.Router();
 
@@ -21,6 +24,32 @@ router.post("/", async (req, res) => {
         message: "Player not found"
       });
     }
+
+    const auctionSet = await AuctionSet.findOne({
+  setNumber
+});
+
+if (!auctionSet) {
+  return res.status(404).json({
+    message: "Auction set not found"
+  });
+}
+
+if (auctionSet.status !== "IN_PROGRESS") {
+  return res.status(400).json({
+    message: "Auction set must be IN_PROGRESS"
+  });
+}
+
+const isPlayerInSet = auctionSet.players.some(
+  (id) => id.toString() === playerId.toString()
+);
+
+if (!isPlayerInSet) {
+  return res.status(400).json({
+    message: "Player does not belong to this auction set"
+  });
+}
 
     const existingAuction = await Auction.findOne({ playerId });
 
@@ -51,11 +80,41 @@ router.post("/:auctionId/bids", async (req, res) => {
   try {
     const { auctionId } = req.params;
     const { teamId, amount } = req.body;
+    if (!mongoose.isValidObjectId(auctionId)) {
+  return res.status(400).json({
+    message: "Invalid auction ID"
+  });
+}
+
     if (!teamId || amount === undefined) {
       return res.status(400).json({
         message: "teamId and amount are required"
       });
     }
+
+    if (
+  typeof amount !== "number" ||
+  !Number.isFinite(amount) ||
+  amount <= 0
+) {
+  return res.status(400).json({
+    message: "Bid amount must be a valid positive number"
+  });
+}
+
+if (!mongoose.isValidObjectId(teamId)) {
+  return res.status(400).json({
+    message: "Invalid team ID"
+  });
+}
+
+const team = await Team.findById(teamId);
+
+if (!team) {
+  return res.status(404).json({
+    message: "Team not found"
+  });
+}
 
     const auction = await Auction.findById(auctionId);
 
@@ -139,6 +198,32 @@ router.patch("/:auctionId/start", async (req, res) => {
     if (auction.status !== "UPCOMING") {
       return res.status(400).json({
         message: "Only an upcoming auction can be started"
+      });
+    }
+
+    const auctionSet = await AuctionSet.findOne({
+      setNumber: auction.setNumber
+    });
+
+    if (!auctionSet) {
+      return res.status(404).json({
+        message: "Auction set not found"
+      });
+    }
+
+    if (auctionSet.status !== "IN_PROGRESS") {
+      return res.status(400).json({
+        message: "Auction set must be IN_PROGRESS to start an auction"
+      });
+    }
+
+    const isPlayerInSet = auctionSet.players.some(
+      (playerId) => playerId.toString() === auction.playerId.toString()
+    );
+
+    if (!isPlayerInSet) {
+      return res.status(400).json({
+        message: "Player does not belong to this auction set"
       });
     }
 

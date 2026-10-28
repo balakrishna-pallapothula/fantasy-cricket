@@ -55,6 +55,23 @@ export const createAuction = async (playerId, setNumber) => {
   return data;
 };
 
+export async function completeAuctionSet(setId) {
+  const response = await fetch(
+    `http://localhost:5000/api/auction-sets/${setId}/complete`,
+    {
+      method: "PATCH"
+    }
+  );
+
+  const result = await response.json();
+
+  if (!response.ok) {
+    throw new Error(result.message || "Failed to complete auction set");
+  }
+
+  return result;
+}
+
 export const startAuction = async (auctionId) => {
   const res = await fetch(`${BASE_URL}/auction/${auctionId}/start`, {
     method: 'PATCH',
@@ -99,6 +116,33 @@ export const getAuctions = async () => {
 
   return res.json();
 };
+
+export const getAuctionSets = async () => {
+  const response = await fetch('http://localhost:5000/api/auction-sets');
+
+  if (!response.ok) {
+    throw new Error('Failed to fetch auction sets');
+  }
+
+  return response.json();
+};
+
+export async function startAuctionSet(setId) {
+  const response = await fetch(
+    `http://localhost:5000/api/auction-sets/${setId}/start`,
+    {
+      method: 'PATCH',
+    }
+  );
+
+  const result = await response.json();
+
+  if (!response.ok) {
+    throw new Error(result.message || 'Failed to start auction set');
+  }
+
+  return result;
+}
 
 export const markAuctionSold = async (auctionId) => {
   const res = await fetch(`${BASE_URL}/auction/${auctionId}/sold`, {
