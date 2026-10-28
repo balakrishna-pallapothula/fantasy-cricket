@@ -34,3 +34,17 @@
 		margin: $common-spacing-large 0 0;
 	}
 }
+
+@media (max-width: 600px) {
+	.footer {
+		&__container {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: $common-spacing-large;
+		}
+
+		&__copyright {
+			margin: 0;
+		}
+	}
+}
