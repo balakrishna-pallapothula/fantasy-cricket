@@ -92,6 +92,7 @@ const playerRoutes = require("./routes/playerRoutes");
 const teamRoutes = require("./routes/teamRoutes");
 const playerProfileRoutes = require("./routes/playerProfileRoutes");
 const auctionRoutes = require("./routes/auctionRoutes");
+const auctionsetRoutes = require("./routes/auctionsetRoutes");
 
 const app = express();
 
@@ -104,6 +105,7 @@ app.use("/api/players", playerRoutes);
 app.use("/api/players", playerProfileRoutes);
 app.use("/api/teams", teamRoutes);
 app.use("/api/auction", auctionRoutes);
+app.use("/api/auction-sets", auctionsetRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on ${PORT}`));
