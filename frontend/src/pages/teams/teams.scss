@@ -1,0 +1,68 @@
+.teams {
+	padding: 16px;
+
+	&__title {
+		margin: 0 0 32px;
+		color: #172554;
+	}
+}
+
+.team {
+	padding: 16px;
+	margin-bottom: 16px;
+	border: 1px solid #cbd5e1;
+	border-radius: 8px;
+	background-color: #f8fafc;
+	color: #172554;
+
+	&--active {
+		border-color: #2563eb;
+		background-color: #dbeafe;
+	}
+
+	&__select {
+		padding: 0;
+		border: 0;
+		background: transparent;
+		color: inherit;
+		font: inherit;
+		font-weight: 700;
+		text-align: left;
+		cursor: pointer;
+
+		&:focus-visible {
+			outline: 2px solid #2563eb;
+			outline-offset: 4px;
+		}
+	}
+
+	&__players {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+		gap: 16px;
+		margin-top: 16px;
+
+		&[hidden] {
+			display: none;
+		}
+	}
+
+	&__player {
+		padding: 16px;
+		border: 1px solid #cbd5e1;
+		border-radius: 8px;
+		background-color: #fff;
+
+		h3 {
+			margin: 0 0 8px;
+		}
+
+		p {
+			margin: 0 0 8px;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+}
