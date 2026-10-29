@@ -1,67 +1,236 @@
 .teams {
-	padding: 16px;
+	width: 100%;
+	max-width: 1440px;
+	margin: 32px auto;
+	padding: 0 24px;
+	font-family: Arial, sans-serif;
 
 	&__title {
 		margin: 0 0 32px;
 		color: #172554;
+		font-size: 32px;
+		font-weight: 700;
 	}
 }
 
 .team {
-	padding: 16px;
-	margin-bottom: 16px;
+	padding: 24px;
+	margin-bottom: 24px;
 	border: 1px solid #cbd5e1;
-	border-radius: 8px;
-	background-color: #f8fafc;
+	border-radius: 12px;
+	background-color: #fff;
 	color: #172554;
+	transition:
+		border-color 0.2s,
+		box-shadow 0.2s;
+
+	&:hover {
+		border-color: #93c5fd;
+	}
 
 	&--active {
 		border-color: #2563eb;
-		background-color: #dbeafe;
+		box-shadow: 0 4px 16px rgb(37 99 235 / 8%);
 	}
 
-	&__select {
-		padding: 0;
-		border: 0;
-		background: transparent;
-		color: inherit;
-		font: inherit;
-		font-weight: 700;
-		text-align: left;
-		cursor: pointer;
+	// Header
+	&__header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 16px;
 
-		&:focus-visible {
-			outline: 2px solid #2563eb;
-			outline-offset: 4px;
+		h2 {
+			margin: 0;
+			font-size: 24px;
 		}
 	}
 
-	&__players {
+	&__select {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 8px;
+		flex-shrink: 0;
+		padding: 10px 16px;
+		border: 1px solid #bfdbfe;
+		border-radius: 8px;
+		background-color: #eff6ff;
+		color: #2563eb;
+		font: inherit;
+		font-size: 14px;
+		font-weight: 600;
+		cursor: pointer;
+
+		&:hover {
+			background-color: #dbeafe;
+		}
+
+		&:focus-visible {
+			outline: 2px solid #2563eb;
+			outline-offset: 3px;
+		}
+	}
+
+	&__chevron {
+		font-size: 11px;
+	}
+
+	// Team statistics
+	&__summary {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+		grid-template-columns: repeat(3, minmax(0, 1fr));
 		gap: 16px;
-		margin-top: 16px;
+		margin-top: 20px;
+	}
+
+	&__stat {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		padding: 18px;
+		border: 1px solid #e2e8f0;
+		border-radius: 10px;
+		background-color: #f8fafc;
+
+		span {
+			color: #64748b;
+			font-size: 14px;
+		}
+
+		strong {
+			color: #172554;
+			font-size: 20px;
+			overflow-wrap: anywhere;
+		}
+	}
+
+	// Squad container
+	&__players {
+		margin-top: 24px;
+		padding-top: 24px;
+		border-top: 1px solid #e2e8f0;
 
 		&[hidden] {
 			display: none;
 		}
 	}
 
-	&__player {
-		padding: 16px;
-		border: 1px solid #cbd5e1;
-		border-radius: 8px;
-		background-color: #fff;
+	// Role grouping
+	&__role-group {
+		margin-bottom: 28px;
 
-		h3 {
-			margin: 0 0 8px;
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	&__role-title {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		margin: 0 0 16px;
+		padding-bottom: 12px;
+		border-bottom: 1px solid #e2e8f0;
+		font-size: 18px;
+		font-weight: 700;
+
+		span {
+			color: #64748b;
+			font-size: 14px;
+			font-weight: 400;
+		}
+	}
+
+	&__role-players {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr));
+		gap: 16px;
+	}
+
+	// Player card
+	&__player {
+		padding: 20px;
+		border: 1px solid #e2e8f0;
+		border-radius: 10px;
+		background-color: #f8fafc;
+		transition:
+			transform 0.2s,
+			box-shadow 0.2s;
+
+		&:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 4px 12px rgb(15 23 42 / 8%);
+		}
+
+		h4 {
+			margin: 0 0 12px;
+			font-size: 18px;
 		}
 
 		p {
-			margin: 0 0 8px;
+			margin: 0;
+			color: #166534;
+			font-size: 14px;
+			font-weight: 700;
+		}
+	}
+}
 
-			&:last-child {
-				margin-bottom: 0;
+// Tablet and mobile
+@media (max-width: 767px) {
+	.teams {
+		margin: 24px auto;
+		padding: 0 16px;
+
+		&__title {
+			font-size: 28px;
+		}
+	}
+
+	.team {
+		padding: 16px;
+
+		&__header {
+			align-items: flex-start;
+			flex-wrap: wrap;
+
+			h2 {
+				font-size: 21px;
+			}
+		}
+
+		&__summary {
+			grid-template-columns: 1fr;
+			gap: 12px;
+		}
+
+		&__stat {
+			padding: 14px;
+		}
+
+		&__players {
+			margin-top: 20px;
+			padding-top: 20px;
+		}
+
+		&__role-group {
+			margin-bottom: 24px;
+		}
+
+		&__role-title {
+			font-size: 17px;
+		}
+
+		&__role-players {
+			gap: 12px;
+		}
+
+		&__player {
+			padding: 16px;
+
+			h4 {
+				font-size: 16px;
 			}
 		}
 	}

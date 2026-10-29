@@ -171,3 +171,51 @@ export const markAuctionUnsold = async (auctionId) => {
 
   return data;
 };
+
+
+export const assignPlayerToSet = async (setId, playerId) => {
+  const response = await fetch(
+    `${BASE_URL}/auction-sets/${setId}/players`,
+    {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ playerId }),
+    }
+  );
+
+  const result = await response.json();
+
+  if (!response.ok) {
+    throw new Error(result.message || 'Failed to assign player');
+  }
+
+  return result;
+};
+
+
+export const createAuctionSet = async (setNumber, name, role) => {
+  const response = await fetch(`${BASE_URL}/auction-sets`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      setNumber: Number(setNumber),
+      name,
+      role,
+      players: [],
+    }),
+  });
+
+  const result = await response.json();
+
+  if (!response.ok) {
+    throw new Error(result.message || 'Failed to create auction set');
+  }
+
+  return result;
+};
+
+

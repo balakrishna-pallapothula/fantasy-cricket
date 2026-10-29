@@ -115,18 +115,18 @@ router.post("/", async (req, res) => {
       data: auctionSet
     });
   } catch (error) {
-  if (error.code === 11000) {
-    return res.status(409).json({
-      message: "Auction set number already exists"
+    if (error.code === 11000) {
+      return res.status(409).json({
+        message: "Auction set number already exists"
+      });
+    }
+
+    console.error("Failed to create auction set:", error);
+
+    return res.status(500).json({
+      message: "Failed to create auction set"
     });
   }
-
-  console.error("Failed to create auction set:", error);
-
-  return res.status(500).json({
-    message: "Failed to create auction set"
-  });
-}
 });
 
 router.patch("/:id/start", async (req, res) => {
@@ -240,5 +240,82 @@ router.patch("/:id/complete", async (req, res) => {
     });
   }
 });
+
+
+router.patch("/:id/players", async (req, res) => {
+  try {
+    const { playerId } = req.body;
+
+    if (!mongoose.isValidObjectId(req.params.id) ||
+      !mongoose.isValidObjectId(playerId)) {
+      return res.status(400).json({
+        message: "Invalid auction set or player ID"
+      });
+    }
+
+    const auctionSet = await AuctionSet.findById(req.params.id);
+
+    if (!auctionSet) {
+      return res.status(404).json({
+        message: "Auction set not found"
+      });
+    }
+
+    if (auctionSet.status !== "UPCOMING") {
+      return res.status(400).json({
+        message: "Players can only be added to UPCOMING sets"
+      });
+    }
+
+    const player = await Player.findById(playerId);
+
+    if (!player) {
+      return res.status(404).json({
+        message: "Player not found"
+      });
+    }
+
+    if (player.role !== auctionSet.role) {
+      return res.status(400).json({
+        message: "Player role does not match auction set role"
+      });
+    }
+
+    const existingAssignment = await AuctionSet.findOne({
+      players: player._id
+    });
+
+    if (existingAssignment) {
+      return res.status(409).json({
+        message: "Player already belongs to an auction set"
+      });
+    }
+
+    const existingAuction = await Auction.findOne({
+      playerId: player._id
+    });
+
+    if (existingAuction) {
+      return res.status(409).json({
+        message: "Player already has an auction record"
+      });
+    }
+
+    auctionSet.players.push(player._id);
+    await auctionSet.save();
+
+    return res.status(200).json({
+      message: "Player assigned successfully",
+      data: auctionSet
+    });
+  } catch (error) {
+    console.error("Failed to assign player:", error);
+
+    return res.status(500).json({
+      message: "Failed to assign player"
+    });
+  }
+});
+
 
 module.exports = router;

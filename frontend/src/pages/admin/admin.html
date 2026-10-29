@@ -5,22 +5,63 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Fantasy Cricket - Admin Dashboard</title>
 	</head>
-	<body>
-		<main>
-			<h1>Admin Auction Dashboard</h1>
-			<p>Manage player auctions from this page.</p>
 
-			<section id="current-auction">
+	<body>
+		<div id="header"></div>
+
+		<main class="admin">
+			<h1 class="admin__title">Admin Auction Dashboard</h1>
+			<p class="admin__description">Manage player auctions from this page.</p>
+
+			<section id="current-auction" class="admin__current">
 				<h2>Current Auction</h2>
+
 				<div id="current-auction-details">
 					<p>No auction information loaded yet.</p>
 				</div>
 			</section>
 
-			<section id="auction-players">
+			<section class="admin__create-set">
+				<h2>Create Auction Set</h2>
+
+				<form id="create-auction-set-form">
+					<div class="form-field">
+						<label for="set-number">Set Number</label>
+						<input type="number" id="set-number" min="1" required />
+					</div>
+
+					<div class="form-field">
+						<label for="set-name">Set Name</label>
+						<input type="text" id="set-name" placeholder="e.g. Wicket-Keeper - Set 5" required />
+					</div>
+
+					<div class="form-field">
+						<label for="set-role">Player Role</label>
+						<select id="set-role" required>
+							<option value="">Select Role</option>
+							<option value="Batsman">Batsman</option>
+							<option value="Bowler">Bowler</option>
+							<option value="All-Rounder">All-Rounder</option>
+							<option value="Wicket-Keeper">Wicket-Keeper</option>
+						</select>
+					</div>
+
+					<button type="submit">Create Set</button>
+				</form>
+			</section>
+
+			<section class="admin__registered">
+				<h2>Unassigned Registered Players</h2>
+				<div id="registered-players"></div>
+			</section>
+
+			<section id="auction-players" class="admin__players">
 				<h2>Auction Players</h2>
+
 				<div id="player-sets"></div>
 			</section>
 		</main>
+
+		<div id="footer"></div>
 	</body>
 </html>
