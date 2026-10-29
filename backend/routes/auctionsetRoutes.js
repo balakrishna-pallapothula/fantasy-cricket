@@ -1,5 +1,5 @@
+const requireAdmin = require("../middleware/authMiddleware");
 const express = require("express");
-
 const mongoose = require("mongoose");
 const Player = require("../models/player");
 const router = express.Router();
@@ -20,7 +20,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
+router.post("/", requireAdmin, async (req, res) => {
   try {
     const { setNumber, name, role, players } = req.body;
 
@@ -129,7 +129,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.patch("/:id/start", async (req, res) => {
+router.patch("/:id/start", requireAdmin, async (req, res) => {
   try {
     const auctionSet = await AuctionSet.findById(req.params.id);
 
@@ -184,7 +184,7 @@ router.patch("/:id/start", async (req, res) => {
 }
 );
 
-router.patch("/:id/complete", async (req, res) => {
+router.patch("/:id/complete", requireAdmin, async (req, res) => {
   try {
     const auctionSet = await AuctionSet.findById(req.params.id);
 
@@ -242,7 +242,7 @@ router.patch("/:id/complete", async (req, res) => {
 });
 
 
-router.patch("/:id/players", async (req, res) => {
+router.patch("/:id/players", requireAdmin, async (req, res) => {
   try {
     const { playerId } = req.body;
 

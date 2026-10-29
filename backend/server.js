@@ -93,11 +93,17 @@ const teamRoutes = require("./routes/teamRoutes");
 const playerProfileRoutes = require("./routes/playerProfileRoutes");
 const auctionRoutes = require("./routes/auctionRoutes");
 const auctionsetRoutes = require("./routes/auctionsetRoutes");
+const authRoutes = require("./routes/authRoutes");
+const cookieParser = require("cookie-parser");
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: "http://localhost:8080",
+  credentials: true
+}));
 app.use(express.json());
+app.use(cookieParser());
 
 connectDB();
 
@@ -106,6 +112,8 @@ app.use("/api/players", playerProfileRoutes);
 app.use("/api/teams", teamRoutes);
 app.use("/api/auction", auctionRoutes);
 app.use("/api/auction-sets", auctionsetRoutes);
+app.use("/api/auth", authRoutes);
+
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on ${PORT}`));

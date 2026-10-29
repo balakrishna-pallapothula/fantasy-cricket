@@ -1,3 +1,4 @@
+const requireAdmin = require("../middleware/authMiddleware");
 const express = require("express");
 const Team = require("../models/team");
 const Player = require("../models/player");
@@ -5,7 +6,7 @@ const Auction = require("../models/auction");
 
 const router = express.Router();
 
-router.post("/", async (req, res) => {
+router.post("/", requireAdmin, async (req, res) => {
   const team = await Team.create(req.body);
   res.status(201).json(team);
 });

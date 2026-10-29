@@ -4,10 +4,11 @@ const Player = require("../models/player");
 const AuctionSet = require("../models/auctionSet");
 const mongoose = require("mongoose");
 const Team = require("../models/team");
+const requireAdmin = require("../middleware/authMiddleware");
 
 const router = express.Router();
 
-router.post("/", async (req, res) => {
+router.post("/", requireAdmin, async (req, res) => {
   try {
     const { playerId, setNumber } = req.body;
 
@@ -26,30 +27,30 @@ router.post("/", async (req, res) => {
     }
 
     const auctionSet = await AuctionSet.findOne({
-  setNumber
-});
+      setNumber
+    });
 
-if (!auctionSet) {
-  return res.status(404).json({
-    message: "Auction set not found"
-  });
-}
+    if (!auctionSet) {
+      return res.status(404).json({
+        message: "Auction set not found"
+      });
+    }
 
-if (auctionSet.status !== "IN_PROGRESS") {
-  return res.status(400).json({
-    message: "Auction set must be IN_PROGRESS"
-  });
-}
+    if (auctionSet.status !== "IN_PROGRESS") {
+      return res.status(400).json({
+        message: "Auction set must be IN_PROGRESS"
+      });
+    }
 
-const isPlayerInSet = auctionSet.players.some(
-  (id) => id.toString() === playerId.toString()
-);
+    const isPlayerInSet = auctionSet.players.some(
+      (id) => id.toString() === playerId.toString()
+    );
 
-if (!isPlayerInSet) {
-  return res.status(400).json({
-    message: "Player does not belong to this auction set"
-  });
-}
+    if (!isPlayerInSet) {
+      return res.status(400).json({
+        message: "Player does not belong to this auction set"
+      });
+    }
 
     const existingAuction = await Auction.findOne({ playerId });
 
@@ -76,15 +77,15 @@ if (!isPlayerInSet) {
   }
 });
 
-router.post("/:auctionId/bids", async (req, res) => {
+router.post("/:auctionId/bids", requireAdmin, async (req, res) => {
   try {
     const { auctionId } = req.params;
     const { teamId, amount } = req.body;
     if (!mongoose.isValidObjectId(auctionId)) {
-  return res.status(400).json({
-    message: "Invalid auction ID"
-  });
-}
+      return res.status(400).json({
+        message: "Invalid auction ID"
+      });
+    }
 
     if (!teamId || amount === undefined) {
       return res.status(400).json({
@@ -93,28 +94,28 @@ router.post("/:auctionId/bids", async (req, res) => {
     }
 
     if (
-  typeof amount !== "number" ||
-  !Number.isFinite(amount) ||
-  amount <= 0
-) {
-  return res.status(400).json({
-    message: "Bid amount must be a valid positive number"
-  });
-}
+      typeof amount !== "number" ||
+      !Number.isFinite(amount) ||
+      amount <= 0
+    ) {
+      return res.status(400).json({
+        message: "Bid amount must be a valid positive number"
+      });
+    }
 
-if (!mongoose.isValidObjectId(teamId)) {
-  return res.status(400).json({
-    message: "Invalid team ID"
-  });
-}
+    if (!mongoose.isValidObjectId(teamId)) {
+      return res.status(400).json({
+        message: "Invalid team ID"
+      });
+    }
 
-const team = await Team.findById(teamId);
+    const team = await Team.findById(teamId);
 
-if (!team) {
-  return res.status(404).json({
-    message: "Team not found"
-  });
-}
+    if (!team) {
+      return res.status(404).json({
+        message: "Team not found"
+      });
+    }
 
     const auction = await Auction.findById(auctionId);
 
@@ -183,7 +184,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.patch("/:auctionId/start", async (req, res) => {
+router.patch("/:auctionId/start", requireAdmin, async (req, res) => {
   try {
     const { auctionId } = req.params;
 
@@ -257,7 +258,7 @@ router.patch("/:auctionId/start", async (req, res) => {
   }
 });
 
-router.patch("/:auctionId/sold", async (req, res) => {
+router.patch("/:auctionId/sold", requireAdmin, async (req, res) => {
   try {
     const { auctionId } = req.params;
 
@@ -312,7 +313,7 @@ router.patch("/:auctionId/sold", async (req, res) => {
   }
 });
 
-router.patch("/:auctionId/unsold", async (req, res) => {
+router.patch("/:auctionId/unsold", requireAdmin, async (req, res) => {
   try {
     const { auctionId } = req.params;
 
