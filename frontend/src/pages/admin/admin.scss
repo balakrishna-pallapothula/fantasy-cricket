@@ -6,6 +6,126 @@
 	font-family: Arial, sans-serif;
 	color: #172554;
 
+	// Admin Login
+	&__login {
+		width: 100%;
+		max-width: 420px;
+		margin: 64px auto;
+		padding: 32px;
+		border: 1px solid #cbd5e1;
+		border-radius: 12px;
+		background-color: #fff;
+
+		h1 {
+			margin: 0 0 24px;
+			font-size: 28px;
+			text-align: center;
+		}
+
+		form {
+			display: flex;
+			flex-direction: column;
+			gap: 20px;
+		}
+
+		.form-field {
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+
+			label {
+				font-size: 14px;
+				font-weight: 600;
+			}
+
+			input {
+				width: 100%;
+				min-height: 44px;
+				padding: 10px 12px;
+				border: 1px solid #cbd5e1;
+				border-radius: 8px;
+				background-color: #fff;
+				font: inherit;
+
+				&:focus-visible {
+					outline: 2px solid #2563eb;
+					outline-offset: 2px;
+				}
+			}
+		}
+
+		button {
+			min-height: 44px;
+			padding: 10px 16px;
+			border: 0;
+			border-radius: 8px;
+			background-color: #2563eb;
+			color: #fff;
+			font: inherit;
+			font-weight: 600;
+			cursor: pointer;
+
+			&:hover:not(:disabled) {
+				background-color: #1d4ed8;
+			}
+
+			&:disabled {
+				opacity: 0.5;
+				cursor: not-allowed;
+			}
+		}
+
+		#admin-login-error {
+			margin: 0;
+			color: #b91c1c;
+			font-size: 14px;
+
+			&:empty {
+				display: none;
+			}
+		}
+	}
+
+	// Dashboard toolbar
+	&__toolbar {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		gap: 16px;
+		margin-bottom: 12px;
+	}
+
+	&__toolbar &__title {
+		margin-bottom: 0;
+	}
+
+	// Logout button
+	&__logout {
+		padding: 10px 18px;
+		border: 1px solid #cbd5e1;
+		border-radius: 8px;
+		background-color: #fff;
+		color: #172554;
+		font: inherit;
+		font-weight: 600;
+		cursor: pointer;
+
+		&:hover:not(:disabled) {
+			background-color: #f1f5f9;
+		}
+
+		&:focus-visible {
+			outline: 2px solid #2563eb;
+			outline-offset: 2px;
+		}
+
+		&:disabled {
+			opacity: 0.5;
+			cursor: not-allowed;
+		}
+	}
+
 	// Page heading
 	&__title {
 		margin: 0 0 12px;
@@ -534,4 +654,8 @@
 			}
 		}
 	}
+}
+
+[hidden] {
+	display: none !important;
 }

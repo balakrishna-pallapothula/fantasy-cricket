@@ -1,3 +1,4 @@
+const requireAdmin = require("../middleware/authMiddleware");
 const express = require("express");
 const Player = require("../models/player");
 
@@ -7,7 +8,7 @@ const router = express.Router();
  * CREATE player
  * POST /api/players
  */
-router.post("/", async (req, res) => {
+router.post("/", requireAdmin, async (req, res) => {
   try {
     console.log("REQ BODY 👉", req.body);
 

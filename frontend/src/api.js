@@ -1,6 +1,13 @@
 
 const BASE_URL = 'http://localhost:5000/api';
 
+const apiFetch = (endpoint, options = {}) => {
+  return fetch(`${BASE_URL}${endpoint}`, {
+    ...options,
+    credentials: 'include',
+  });
+};
+
 export const getPlayers = async () => {
   const res = await fetch(`${BASE_URL}/players`);
   return res.json();
@@ -17,7 +24,7 @@ export const getTeams = async () => {
 };
 
 export const createPlayer = async (player) => {
-  const res = await fetch(`${BASE_URL}/players`, {
+  const res = await apiFetch('/players', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -35,7 +42,7 @@ export const createPlayer = async (player) => {
 };
 
 export const createAuction = async (playerId, setNumber) => {
-  const res = await fetch(`${BASE_URL}/auction`, {
+  const res = await apiFetch('/auction', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -56,12 +63,9 @@ export const createAuction = async (playerId, setNumber) => {
 };
 
 export async function completeAuctionSet(setId) {
-  const response = await fetch(
-    `http://localhost:5000/api/auction-sets/${setId}/complete`,
-    {
-      method: "PATCH"
-    }
-  );
+  const response = await apiFetch(`/auction-sets/${setId}/complete`, {
+    method: 'PATCH',
+  });
 
   const result = await response.json();
 
@@ -73,7 +77,7 @@ export async function completeAuctionSet(setId) {
 }
 
 export const startAuction = async (auctionId) => {
-  const res = await fetch(`${BASE_URL}/auction/${auctionId}/start`, {
+  const res = await apiFetch(`/auction/${auctionId}/start`, {
     method: 'PATCH',
   });
 
@@ -87,7 +91,7 @@ export const startAuction = async (auctionId) => {
 };
 
 export const placeBid = async (auctionId, teamId, amount) => {
-  const res = await fetch(`${BASE_URL}/auction/${auctionId}/bids`, {
+  const res = await apiFetch(`/auction/${auctionId}/bids`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -128,12 +132,9 @@ export const getAuctionSets = async () => {
 };
 
 export async function startAuctionSet(setId) {
-  const response = await fetch(
-    `http://localhost:5000/api/auction-sets/${setId}/start`,
-    {
-      method: 'PATCH',
-    }
-  );
+  const response = await apiFetch(`/auction-sets/${setId}/start`, {
+    method: 'PATCH',
+  });
 
   const result = await response.json();
 
@@ -145,7 +146,7 @@ export async function startAuctionSet(setId) {
 }
 
 export const markAuctionSold = async (auctionId) => {
-  const res = await fetch(`${BASE_URL}/auction/${auctionId}/sold`, {
+  const res = await apiFetch(`/auction/${auctionId}/sold`, {
     method: 'PATCH',
   });
 
@@ -159,7 +160,7 @@ export const markAuctionSold = async (auctionId) => {
 };
 
 export const markAuctionUnsold = async (auctionId) => {
-  const res = await fetch(`${BASE_URL}/auction/${auctionId}/unsold`, {
+  const res = await apiFetch(`/auction/${auctionId}/unsold`, {
     method: 'PATCH',
   });
 
@@ -174,16 +175,13 @@ export const markAuctionUnsold = async (auctionId) => {
 
 
 export const assignPlayerToSet = async (setId, playerId) => {
-  const response = await fetch(
-    `${BASE_URL}/auction-sets/${setId}/players`,
-    {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ playerId }),
-    }
-  );
+  const response = await apiFetch(`/auction-sets/${setId}/players`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ playerId }),
+  });
 
   const result = await response.json();
 
@@ -196,7 +194,7 @@ export const assignPlayerToSet = async (setId, playerId) => {
 
 
 export const createAuctionSet = async (setNumber, name, role) => {
-  const response = await fetch(`${BASE_URL}/auction-sets`, {
+  const response = await apiFetch('/auction-sets', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -218,4 +216,47 @@ export const createAuctionSet = async (setNumber, name, role) => {
   return result;
 };
 
+export const loginAdmin = async (email, password) => {
+  const res = await apiFetch('/auth/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ email, password }),
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error(data.message || 'Admin login failed');
+  }
+
+  return data;
+};
+
+export const getAdminSession = async () => {
+  const res = await apiFetch('/auth/me');
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error(data.message || 'Session verification failed');
+  }
+
+  return data;
+};
+
+export const logoutAdmin = async () => {
+  const res = await apiFetch('/auth/logout', {
+    method: 'POST',
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error(data.message || 'Admin logout failed');
+  }
+
+  return data;
+};
 

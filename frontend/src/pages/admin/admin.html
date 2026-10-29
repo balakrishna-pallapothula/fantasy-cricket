@@ -10,56 +10,81 @@
 		<div id="header"></div>
 
 		<main class="admin">
-			<h1 class="admin__title">Admin Auction Dashboard</h1>
-			<p class="admin__description">Manage player auctions from this page.</p>
+			<section id="admin-login" class="admin__login">
+				<h1>Admin Login</h1>
 
-			<section id="current-auction" class="admin__current">
-				<h2>Current Auction</h2>
-
-				<div id="current-auction-details">
-					<p>No auction information loaded yet.</p>
-				</div>
-			</section>
-
-			<section class="admin__create-set">
-				<h2>Create Auction Set</h2>
-
-				<form id="create-auction-set-form">
+				<form id="admin-login-form">
 					<div class="form-field">
-						<label for="set-number">Set Number</label>
-						<input type="number" id="set-number" min="1" required />
+						<label for="admin-email">Email</label>
+						<input type="email" id="admin-email" autocomplete="username" required />
 					</div>
 
 					<div class="form-field">
-						<label for="set-name">Set Name</label>
-						<input type="text" id="set-name" placeholder="e.g. Wicket-Keeper - Set 5" required />
+						<label for="admin-password">Password</label>
+						<input type="password" id="admin-password" autocomplete="current-password" required />
 					</div>
 
-					<div class="form-field">
-						<label for="set-role">Player Role</label>
-						<select id="set-role" required>
-							<option value="">Select Role</option>
-							<option value="Batsman">Batsman</option>
-							<option value="Bowler">Bowler</option>
-							<option value="All-Rounder">All-Rounder</option>
-							<option value="Wicket-Keeper">Wicket-Keeper</option>
-						</select>
-					</div>
-
-					<button type="submit">Create Set</button>
+					<button type="submit">Login</button>
+					<p id="admin-login-error" role="alert"></p>
 				</form>
 			</section>
 
-			<section class="admin__registered">
-				<h2>Unassigned Registered Players</h2>
-				<div id="registered-players"></div>
-			</section>
+			<div id="admin-dashboard" hidden>
+				<div class="admin__toolbar">
+					<h1 class="admin__title">Admin Auction Dashboard</h1>
 
-			<section id="auction-players" class="admin__players">
-				<h2>Auction Players</h2>
+					<button type="button" id="admin-logout-btn" class="admin__logout">Logout</button>
+				</div>
+				<p class="admin__description">Manage player auctions from this page.</p>
 
-				<div id="player-sets"></div>
-			</section>
+				<section id="current-auction" class="admin__current">
+					<h2>Current Auction</h2>
+
+					<div id="current-auction-details">
+						<p>No auction information loaded yet.</p>
+					</div>
+				</section>
+
+				<section class="admin__create-set">
+					<h2>Create Auction Set</h2>
+
+					<form id="create-auction-set-form">
+						<div class="form-field">
+							<label for="set-number">Set Number</label>
+							<input type="number" id="set-number" min="1" required />
+						</div>
+
+						<div class="form-field">
+							<label for="set-name">Set Name</label>
+							<input type="text" id="set-name" placeholder="e.g. Wicket-Keeper - Set 5" required />
+						</div>
+
+						<div class="form-field">
+							<label for="set-role">Player Role</label>
+							<select id="set-role" required>
+								<option value="">Select Role</option>
+								<option value="Batsman">Batsman</option>
+								<option value="Bowler">Bowler</option>
+								<option value="All-Rounder">All-Rounder</option>
+								<option value="Wicket-Keeper">Wicket-Keeper</option>
+							</select>
+						</div>
+
+						<button type="submit">Create Set</button>
+					</form>
+				</section>
+
+				<section class="admin__registered">
+					<h2>Unassigned Registered Players</h2>
+					<div id="registered-players"></div>
+				</section>
+
+				<section id="auction-players" class="admin__players">
+					<h2>Auction Players</h2>
+
+					<div id="player-sets"></div>
+				</section>
+			</div>
 		</main>
 
 		<div id="footer"></div>

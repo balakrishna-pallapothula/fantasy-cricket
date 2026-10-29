@@ -19,13 +19,71 @@ import {
   markAuctionSold,
   markAuctionUnsold,
   completeAuctionSet,
+  loginAdmin,
+  getAdminSession,
+  logoutAdmin,
 } from '../../api';
 
 const headerRoot = document.querySelector('#header');
 const footerRoot = document.querySelector('#footer');
+const loginSection = document.getElementById('admin-login');
+const loginForm = document.getElementById('admin-login-form');
+const loginError = document.getElementById('admin-login-error');
+const dashboard = document.getElementById('admin-dashboard');
+const logoutButton = document.getElementById('admin-logout-btn');
+const showDashboard = () => {
+  loginSection.hidden = true;
+  dashboard.hidden = false;
+  loadAuctions();
+};
 
 if (headerRoot) renderHeader(headerRoot);
 if (footerRoot) renderFooter(footerRoot);
+
+loginForm.addEventListener('submit', async (event) => {
+  event.preventDefault();
+
+  const email = document.getElementById('admin-email').value.trim();
+  const password = document.getElementById('admin-password').value;
+
+  loginError.textContent = '';
+
+  try {
+    await loginAdmin(email, password);
+    showDashboard();
+  } catch (error) {
+    loginError.textContent = error.message;
+  }
+});
+
+logoutButton.addEventListener('click', async () => {
+  logoutButton.disabled = true;
+
+  try {
+    await logoutAdmin();
+
+    dashboard.hidden = true;
+    loginSection.hidden = false;
+
+    loginForm.reset();
+    loginError.textContent = '';
+  } catch (error) {
+    console.error('Logout failed:', error);
+    alert('Unable to log out. Please try again.');
+  } finally {
+    logoutButton.disabled = false;
+  }
+});
+
+const initializeAdmin = async () => {
+  try {
+    await getAdminSession();
+    showDashboard();
+  } catch (error) {
+    loginSection.hidden = false;
+    dashboard.hidden = true;
+  }
+};
 
 const formatCurrency = (amount) =>
   `₹${Number(amount).toLocaleString('en-IN')}`;
@@ -702,4 +760,4 @@ if (createSetForm) {
   );
 }
 
-loadAuctions();
+initializeAdmin();
